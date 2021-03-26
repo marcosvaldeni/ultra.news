@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { session } from 'next-auth/client';
 import { Readable } from 'stream';
 import Stripe from 'stripe';
 
@@ -67,7 +66,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
             await saveSubscription(
               checkoutSession.subscription.toString(),
-              checkoutSession.customer.toString()
+              checkoutSession.customer.toString(),
+              true
             );
 
           default:
